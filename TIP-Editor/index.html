@@ -21,7 +21,8 @@
   <div class="n-byline">
     <div class="byline">
         <ul class="authors">
-          <h2> Anonymous </h2>
+          <h2> Jingyu Zhuang<sup>1,2</sup>  Di Kang<sup>2</sup>    Yan-Pei Cao<sup>2</sup>    Guanbin Li<sup>1</sup>    Liang Lin<sup>1</sup>    Ying Shan<sup>2</sup>  </h2>
+          <h2> <sup>1</sup>Sun Yat-sen University  &nbsp;&nbsp;&nbsp; <sup>2</sup>Tencent AI Lab  </h2>
         </ul>
         
     </div>
@@ -32,26 +33,51 @@
   <h2 class="title is-3"> Table of contents:</h2>
   <ul>
     <li>
+        <div>
+          <b><a href="#content0"> 1. Framework of our TiP-Editor</a></b>
+        </div>
+      </li>
+    <li>
       <div>
-        <b><a href="#content1"> 1. Rendering videos of our editing results</a></b>
+        <b><a href="#content1"> 2. Rendering videos of our editing results</a></b>
       </div>
     </li>
     <li>
       <div>
-        <b><a href="#content2"> 2. Ablation study results</a></b>
+        <b><a href="#content2"> 3. Ablation study results</a></b>
       </div>
     </li>
     <li>
       <div>
-        <b><a href="#content3"> 3. Comparisons with state-of-the-art methods</a></b>
+        <b><a href="#content3"> 4. Comparisons with state-of-the-art methods</a></b>
       </div>
     </li>
   </ul> 
   
+
+  <h2 id="content0"> 1. Framework of our TiP-Editor</h2>
+
+  <h3 class="title is-3">Illustration of TI-Editor pipeline:</h3>
+  <p></p>
+
+  <video controls="" loop="" height="512", width="512">
+    <source src="static/videos/TIP_editor_video_short.mp4" type='video/mp4'>
+  </video>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <h3 class="title is-3">Overview of our TI-Editor:</h3>
+  <p></p>
+  <img src="static/images/framework.png" width="100%">
+  <p>
+    TIP-Editor optimizes a 3D scene that is represented as 3D Gaussian splatting (GS) to conform with a given hybrid text-image prompt. The editing process includes three stages: 1) a stepwise 2D personalization strategy, which features a localization loss in the scene personalization step and a separate novel content personalization step dedicated to the reference image based on LoRA; 2) a coarse editing stage using SDS; and 3) a pixel-level texture refinement stage, utilizing carefully generated pseudo-GT image from both the rendered image and the denoised image.
+  </p>
   
 
-
-  <h2 id="content1"> 1. Rendering videos of our editing results</h2>
+  <h2 id="content1"> 2. Rendering videos of our editing results</h2>
   
   <h3 class="title is-3">Our TI-Editor supports different editing tasks:</h3>
   <p>
@@ -678,7 +704,7 @@
 <p></p>
 <p></p>
 <!-- 222 -->
-  <h2 id="content2"> 2. Ablation study results</h2>
+  <h2 id="content2"> 3. Ablation study results</h2>
 
   <h3 class="title is-3">a) Ablation studies on the stepwise 2D personalization</h3>
 
@@ -872,7 +898,7 @@
   <p></p>
   <p></p>
   <!-- 333 -->
-  <h2 id="content3"> 3. Comparisons with state-of-the-art methods</h2>
+  <h2 id="content3"> 4. Comparisons with state-of-the-art methods</h2>
   
   <p>
     Due to the lack of dedicated image-based editing baselines, we compare with two state-of-the-art text-based radiance field editing methods, including:
