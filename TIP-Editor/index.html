@@ -1,7 +1,1226 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="media/graphics/favicon.ico" rel="shortcut icon" />
+    <title>  TI-Editor: Text-Image Guided 3D Scene Editing </title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/box_swipe.css">
+    <script src="./static/js/box_swipe.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Segoe+UI" rel="stylesheet" />
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>TIP-Editor</p>
+
+
+  <div class="n-title">
+    <h1> TIP-Editor: An Accurate 3D Editor Following Both Text-Prompts And Image-Prompts</h1>
+  </div>
+
+  <div class="n-byline">
+    <div class="byline">
+        <ul class="authors">
+          <h2> Anonymous </h2>
+        </ul>
+        
+    </div>
+</div>
+
+<div class="n-article">
+
+  <h2 class="title is-3"> Table of contents:</h2>
+  <ul>
+    <li>
+      <div>
+        <b><a href="#content1"> 1. Rendering videos of our editing results</a></b>
+      </div>
+    </li>
+    <li>
+      <div>
+        <b><a href="#content2"> 2. Ablation study results</a></b>
+      </div>
+    </li>
+    <li>
+      <div>
+        <b><a href="#content3"> 3. Comparisons with state-of-the-art methods</a></b>
+      </div>
+    </li>
+  </ul> 
+  
+  
+
+
+  <h2 id="content1"> 1. Rendering videos of our editing results</h2>
+  
+  <h3 class="title is-3">Our TI-Editor supports different editing tasks:</h3>
+  <p>
+    <ul>
+      <li><b><font color="#BC0B0B">Object Insertion</font>:</b> this task involves the addition of a new object to the scene. Our method is able to define a specific object through a reference image and set the position of the object by setting a 3D bounding box.</li>
+      <li><b><font color="#5E90C1">Whole Object Replacement</font>:</b> replacing a whole object within the scene to the specific object from the reference image.</li>
+      <li><b><font color="#B78500">Part-Level Object Editing</font>:</b> altering the shape or texture of a part of an object.</li>
+      <li><b><font color="#782CE1">Sequential Editing</font>:</b> performing multiple editing to a same scene in sequence.</li>
+      <li><b><font color="#CD9B9B">Re-texturing</font>:</b> modifying the texture of an object while keeping the shape unchanged.</li>
+      <li><b><font color="#4A772E">Stylization</font>:</b> transforming the whole scene to the style of the reference image.</li>
+    </ul> 
+  </p>
+  
+  <h3 class="title is-3">Explanation of Display Layout:</h3>
+    <p></p>
+  <img src="static/images/explanation.png" width="800px">
+
+
+  <p> <font size="5" color="red">PS: Click to play/stop the videos, drag to compare results.</font></p>
+  
+
+  <h3 class="title is-3">Scene 1: A plush toy on a table</h3>
+  
+  <div class="oneline">
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-0" width="512">
+                  <source src="static/videos/s1_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-0" width="512">
+                  <source src="static/videos/s1_ori_glassbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/sunglasses1.jpeg" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-0" width="512">
+                  <source src="static/videos/s1_e2_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-0" width="512">
+                  <source src="static/videos/s1_ori_glassbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/sunglasses2.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-1" width="512">
+                  <source src="static/videos/s1_e4_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-1" width="512">
+                  <source src="static/videos/s1_ori_toybox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#CD9B9B">Re-texturing</font></b>
+        <p>A V<sub>1</sub> toy with V<sub>2</sub> pattern</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/p1.png" width="225px">
+      </div>
+    </div>
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-1" width="512">
+                  <source src="static/videos/s1_e3_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-1" width="512">
+                  <source src="static/videos/s1_ori_hatbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> toy wearing a V<sub>2</sub> hat</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/hat2.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">Scene 2: A white dog</h3>
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-2" width="512">
+                  <source src="static/videos/s2_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-2" width="512">
+                  <source src="static/videos/s2_ori_glassbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> dog wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/sunglasses3.jpg" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-2" width="512">
+                  <source src="static/videos/s2_e2_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-2 width="512">
+                  <source src="static/videos/s2_ori_dogbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> cat</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/cat1.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">Scene 3: A human face</h3>
+
+  <div class="oneline">
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-3" width="512">
+                  <source src="static/videos/s3_e3_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-3" width="512">
+                  <source src="static/videos/s3_ori_beardbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> man with V<sub>2</sub> beard</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/beard.jpeg" width="225px">
+      </div>
+    </div>
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-3" width="512">
+                  <source src="static/videos/s3_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-3" width="512">
+                  <source src="static/videos/s3_ori_headbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#B78500">Part-Level Object Editing</font></b>
+        <p>A V<sub>2</sub> joker in a room</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/joker.jpg" width="225px">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="oneline">
+    
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-4" width="512">
+                  <source src="static/videos/s3_e4_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-4 width="512">
+                  <source src="static/videos/s3_ori_clothbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 1st update</font></b>
+        <p>A  V<sub>*</sub> man wearing a V<sub>2</sub> shirt</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/shirt.jpeg" width="225px">
+      </div>
+    </div>
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-4" width="512">
+                  <source src="static/videos/s3_e5_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-4" width="512">
+                  <source src="static/videos/s3_seq_beardbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 2nd update</font></b>
+        <p>A  V<sub>**</sub> man with a V<sub>2</sub> beard</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/beard.jpeg" width="225px">
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline">
+   
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-5" width="512">
+                  <source src="static/videos/s3_e6_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-5 width="512">
+                  <source src="static/videos/s3_seq_hatbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 3rd update</font></b>
+        <p>A  V<sub>***</sub> man wearing a V<sub>2</sub> hat</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/hat1.png" width="225px">
+      </div>
+    </div>
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-5" width="512">
+                  <source src="static/videos/s3_e2_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-5 width="512">
+                  <source src="static/videos/s3_ori.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#4A772E">Stylization</font></b>
+        <p>A  V<sub>2</sub> style painting of a V<sub>1</sub> man</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/Modigliani.jpeg" width="225px">
+      </div>
+    </div>
+
+  </div>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">Scene 4: A horse sculpture in a garden</h3>
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-5" width="512">
+                  <source src="static/videos/s4_e3_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-5" width="512">
+                  <source src="static/videos/s4_ori_horsebox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> horse in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/horse1.png" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-5" width="512">
+                  <source src="static/videos/s4_e4_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-5 width="512">
+                  <source src="static/videos/s4_ori_horsebox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> horse in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/horse2.jpeg" width="225px">
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-6" width="512">
+                  <source src="static/videos/s4_e2_refine.mp4.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-6 width="512">
+                  <source src="static/videos/s4_ori_horsebox2.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> giraffe in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/giraffe2.png" width="225px">
+      </div>
+    </div>
+
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-6" width="512">
+                  <source src="static/videos/s4_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-6" width="512">
+                  <source src="static/videos/s4_ori_horsebox3.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 1st update</font></b>
+        <p>A  V<sub>2</sub> giraffe in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/giraffe1.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-7" width="512">
+                  <source src="static/videos/s4_e5_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-7" width="512">
+                  <source src="static/videos/s4_s_glassbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 2nd update</font></b>
+        <p>A  V<sub>**</sub> giraffe wearing V<sub>2</sub> sunglasses in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/sunglasses2.png" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-7" width="512">
+                  <source src="static/videos/s4_e6_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-7 width="512">
+                  <source src="static/videos/s4_s_hatbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#782CE1">Sequential Editing: 3rd update</font></b>
+        <p>A  V<sub>***</sub> horse wearing a V<sub>2</sub> hat in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/hat1.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">Scene 5: A bear sculpture in woods</h3>
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-8" width="512">
+                  <source src="static/videos/s5_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-8" width="512">
+                  <source src="static/videos/s5_ori_bearbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> dog in woods</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/dog1.jpeg" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-8" width="512">
+                  <source src="static/videos/s5_e2_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-8 width="512">
+                  <source src="static/videos/s5_ori_bearbox.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#CD9B9B">Re-texturing</font></b>
+        <p>A V<sub>1</sub> bear with V<sub>2</sub> pattern in woods</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/p2.jpeg" width="225px">
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">Scene 6: An outdoor wood table</h3>
+
+
+  <div class="oneline">
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-9" width="512">
+                  <source src="static/videos/s6_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-9" width="512">
+                  <source src="static/videos/s6_ori_cake.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>2</sub> cake on a V<sub>1</sub> table</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/cake1.jpg" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-9" width="512">
+                  <source src="static/videos/s6_e2_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-9 width="512">
+                  <source src="static/videos/s6_ori_apple.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>2</sub> apple on a V<sub>1</sub> table</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/apple1.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+  
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<!-- 222 -->
+  <h2 id="content2"> 2. Ablation study results</h2>
+
+  <h3 class="title is-3">a) Ablation studies on the stepwise 2D personalization</h3>
+
+  <p>
+    Results of ablation experiments to evaluate the impact of L<sub>loc</sub> and LoRA Layers in the learning step (refer to Section 4.1).
+  </p>
+
+  <div class="oneline3">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Ablation/a1.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/sunglasses1.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>w/o L<sub>loc</sub></b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>w/o LoRA</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">b) Ablation study on different 3D representations</h3>
+
+
+  <p>
+    Results of different 3D representation methods for the same scene under the guidance of the same fine-tuned diffusion model.
+  </p>
+
+  <div class="oneline3">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Ablation/a2.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/giraffe1.png" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>2</sub> giraffe in a garden</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>Instant-NGP</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>NeuMesh</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>3DGS</b></p> 
+      </div>
+    </div>
+  </div>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <h3 class="title is-3">c) Effectiveness of the pixel-level refinement step</h3>
+
+
+  <p>
+    Comparison of the coarse editing results <- / -> the refinement results
+  </p>
+
+  <div class="oneline">
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-10" width="512">
+                  <source src="static/videos/s1_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-10" width="512">
+                  <source src="static/videos/Ablation/c_glass.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/sunglasses1.jpeg" width="225px">
+      </div>
+    </div>
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-10" width="512">
+                  <source src="static/videos/s4_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-10 width="512">
+                  <source src="static/videos/Ablation/c_white_giraffe.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+        <p>A V<sub>2</sub> giraffe in a garden</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/giraffe1.png" width="225px">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneline">
+    
+    <div class="showcontainer">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video loop="" class="slider-video slider-video-11" width="512">
+                  <source src="static/videos/s3_e1_refine.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 512">
+              <video loop="" class="slider-video slider-video-11" width="512">
+                  <source src="static/videos/Ablation/c_joker.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+      <div class="taskname">
+        <b><font color="#B78500">Part-Level Object Editing</font></b>
+        <p>A V<sub>2</sub> joker in a room</p>
+      </div>
+      <div class="refimage">
+        <img src="static/images/reference_images/joker.jpg" width="225px">
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    initComparisons();
+    linkVideos(0);
+    linkVideos(1);
+    linkVideos(2);
+    linkVideos(3);
+    linkVideos(4);
+    linkVideos(5);
+    linkVideos(6);
+    linkVideos(7);
+    linkVideos(8);
+    linkVideos(9);
+    linkVideos(10);
+    linkVideos(11);
+  </script>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <!-- 333 -->
+  <h2 id="content3"> 3. Comparisons with state-of-the-art methods</h2>
+  
+  <p>
+    Due to the lack of dedicated image-based editing baselines, we compare with two state-of-the-art text-based radiance field editing methods, including:
+    <ul>
+      <li><b>Instruct-NeRF2NeRF (I-N2N ):</b> I-N2N utilizes Instruct-pix2pix to update the rendered multi-view images according to special text instructions obtained with GPT3.
+        In our experiments, we use BLIP2 to obtain the textual description of our reference image and then convert it into a suitable instruction as in I-N2N.</li>
+      <li><b>DreamEditor:</b> DreamEditor adopts NeuMesh representation distilled from a NeRF and includes an explicitly attention-based localization operation to support local editing.
+        For a fair comparison, we replace its automatic localization with a more accurate manually selected editing area.</li>
+  </ul> 
+  </p>
+
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c1.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/sunglasses1.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c2.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/sunglasses2.png" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A V<sub>1</sub> toy wearing V<sub>2</sub> sunglasses</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c3.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/hat2.png" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A V<sub>1</sub> toy wearing a V<sub>2</sub> hat</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c4.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/giraffe1.png" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>2</sub> giraffe in a garden</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c5.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/horse1.png" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>2</sub> horse in a garden</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c6.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/horse2.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>2</sub> horse in a garden</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#5E90C1">Whole Object Replacement</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c7.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/joker.jpg" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>2</sub> joker in a room</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#B78500">Part-Level Object Editing</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c8.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/shirt.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p></p>
+        <p>A V<sub>1</sub> man wearing a V<sub>2</sub> shirt</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#B78500">Part-Level Object Editing</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c9.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/beard.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A V<sub>1</sub> man with a V<sub>2</sub> beard</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#BC0B0B">Object Insertion</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+ 
+
+  <div class="oneline2">
+    <div class="c_container">
+      <div class="C_vedio">
+        <video controls="" loop="" height="250", width="1000"  src="static/videos/Comparisons/c10.mov">
+        </video>
+      </div>
+      <div class="C_ref">
+        <img src="static/images/reference_images/Modigliani.jpeg" width="175px">
+      </div>
+      <div class="C_p">
+        <p>A  V<sub>2</sub> style painting of a V<sub>1</sub> man</p>
+      </div>
+      <div class="C-t">
+        <b><font color="#4A772E">Stylization</font></b>
+      </div>
+      <div class="M0">
+        <p></p><b>Original</b></p>
+      </div>
+      <div class="M1">
+        <p></p><b>I-N2N</b></p> 
+      </div>
+      <div class="M2">
+        <p></p><b>DreamEditor</b></p>  
+      </div>
+      <div class="M3">
+        <p></p><b>Ours</b></p> 
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+        
+          
+          
+
+
+          
+            
+    
+
+
 </body>
 </html>
