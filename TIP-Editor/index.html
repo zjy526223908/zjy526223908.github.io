@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="media/graphics/favicon.ico" rel="shortcut icon" />
-    <title>  TI-Editor: Text-Image Guided 3D Scene Editing </title>
+    <title>  TIP-Editor: Text-Image Guided 3D Scene Editing </title>
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/box_swipe.css">
     <script src="./static/js/box_swipe.js"></script>
@@ -28,7 +28,39 @@
     </div>
 </div>
 
+<p style="text-align: center;">
+  <span style="font-size:28px;">
+    <strong>
+      <a href="https://github.com/zjy526223908/TIP-Editor">
+        <span style="color:#3498db;">Code</span>
+      </a><span style="color:#3498db;">&nbsp;| </span>
+      <a href="https://arxiv.org/abs/2401.14828">
+      <span style="color:#3498db;">Paper</span>
+      </a><span style="color:#3498db;"> | </span>
+      <a href="https://drive.google.com/drive/folders/1DWcMyx5ab7PW3QkCwtJmkKUBL_feQxNW?usp=drive_link">
+        <span style="color:#3498db;">Edited 3D-GS</span>
+      </a><span style="color:#3498db;">&nbsp;</span>
+    </strong>
+  </span>
+</p>
+
+
+<center>
+  <video controls="" loop="" height="512", width="512">
+    <source src="static/videos/TIP_editor_video_short.mp4" type='video/mp4'>
+  </video>
+</center>
+
+
+
 <div class="n-article">
+
+  
+
+  <h2 id="content0"> Abstract</h2>
+  <p>
+    Text-driven 3D scene editing has gained significant attention owing to its convenience and user-friendliness. However, existing methods still lack accurate control of the specified appearance and location of the editing result due to the inherent limitations of the text description. To this end, we propose a 3D scene editing framework, TIP-Editor, that accepts both text and imageprompts and a 3D bounding box to specify the editing region. With the image prompt, users can conveniently specify the detailed appearance/style of the target content in complement to the text description, enabling accurate control of the appearance. Specifically, TIP-Editor employs a stepwise 2D personalization strategy to better learn the representation of the existing scene and the reference image, in which a localization loss is proposed to encourage correct object placement as specified by the bounding box. Additionally, TIP-Editor utilizes explicit and flexible 3D Gaussian splatting (GS) as the 3D representation to facilitate local editing while keeping the background unchanged. Extensive experiments have demonstrated that TIPEditor conducts accurate editing following the text and image prompts in the specified bounding box region, consistently outperforming the baselines in editing quality, and the alignment to the prompts, qualitatively and quantitatively.
+  </p>
 
   <h2 class="title is-3"> Table of contents:</h2>
   <ul>
@@ -55,21 +87,16 @@
   </ul> 
   
 
-  <h2 id="content0"> 1. Framework of our TiP-Editor</h2>
+  <h2 id="content0"> 1. Framework of our TIP-Editor</h2>
 
-  <h3 class="title is-3">Illustration of TI-Editor pipeline:</h3>
-  <p></p>
-
-  <video controls="" loop="" height="512", width="512">
-    <source src="static/videos/TIP_editor_video_short.mp4" type='video/mp4'>
-  </video>
+ 
 
 
   <p></p>
   <p></p>
   <p></p>
 
-  <h3 class="title is-3">Overview of our TI-Editor:</h3>
+  <h3 class="title is-3">Overview of our TIP-Editor:</h3>
   <p></p>
   <img src="static/images/framework.png" width="100%">
   <p>
@@ -79,7 +106,7 @@
 
   <h2 id="content1"> 2. Rendering videos of our editing results</h2>
   
-  <h3 class="title is-3">Our TI-Editor supports different editing tasks:</h3>
+  <h3 class="title is-3">Our TIP-Editor supports different editing tasks:</h3>
   <p>
     <ul>
       <li><b><font color="#BC0B0B">Object Insertion</font>:</b> this task involves the addition of a new object to the scene. Our method is able to define a specific object through a reference image and set the position of the object by setting a 3D bounding box.</li>
