@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="media/graphics/favicon.ico" rel="shortcut icon" />
+    <title>  DAGSM: Disentangled Avatar Generation with GS-enhanced Mesh </title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/box_swipe.css">
+    <script src="./static/js/box_swipe.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Segoe+UI" rel="stylesheet" />
+</head>
+
+<body>
+
+
+  <div class="n-title">
+    <h1> DAGSM: Disentangled Avatar Generation with GS-enhanced Mesh</h1>
+  </div>
+
+
+<div class="n-byline">
+    <div class="byline">
+        <ul class="authors">
+          <h2> Jingyu Zhuang<sup>1,2</sup>  Di Kang<sup>2</sup>    Linchao Bao<sup>2</sup>        Liang Lin<sup>1</sup>   Guanbin Li<sup>1</sup>  </h2>
+          <h2> <sup>1</sup>Sun Yat-sen University  &nbsp;&nbsp;&nbsp; <sup>2</sup>Tencent  </h2>
+        </ul>
+        
+    </div>
+</div>
+
+
+
+<div class="n-article">
+
+  <h2 class="title is-3"> Table of contents:</h2>
+  <ul>
+    <li>
+      <div>
+        <b><a href="#content1"> 1. Animation videos of our avatars</a></b>
+      </div>
+    </li>
+	  <li>
+      <div>
+        <b><a href="#content4"> 2. Clothing replacement results</a></b>
+      </div>
+    </li>
+	<li>
+      <div>
+        <b><a href="#content2"> 3. Muanual texture editing</a></b>
+      </div>
+    </li>
+    <li>
+      <div>
+		<b><a href="#content3"> 4. Comparisons with baselines</a></b>
+      </div>
+    </li>
+    
+  </ul> 
+  
+  
+
+
+  <h2 id="content1"> 1. Animation videos of our avatars</h2>
+  
+
+  
+
+  <b>Avatar 1: "A chubby african woman wearing a green long sleeve long straight silk dress"</b>
+	
+	<div class="oneline4">
+		<div class="c_avatar">
+		  <div class="C_vedio">
+			<video controls=""  height="512", width="512"  src="static/videos/show1/360.mp4">
+			</video>
+		  </div>
+		  <div class="C_vedio2">
+			<video controls="" height="512", width="1024"  src="static/videos/show1/q7.mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 2: "A beautiful caucasian woman with short hair wearing a brown coat with gray t-shirt inside, skinny blue jeans and white board shoes"</b>
+	
+	<div class="oneline4">
+		<div class="c_avatar">
+		  <div class="C_vedio">
+			<video controls=""  height="512", width="512"  src="static/videos/show2/360.mp4">
+			</video>
+		  </div>
+		  <div class="C_vedio2">
+			<video controls="" height="512", width="512"  src="static/videos/show2/show2_q9.mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+  
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 3: "A chinese teenage girl wearing a crew neck blue denim sleeveless A-skirt, gray leggings and white board shoes"</b>
+	
+	<div class="oneline4">
+		<div class="c_avatar">
+		  <div class="C_vedio">
+			<video controls=""  height="512", width="512"  src="static/videos/show3/360.mp4">
+			</video>
+		  </div>
+		  <div class="C_vedio2">
+			<video controls="" height="512", width="512"  src="static/videos/show3/show3_q9.mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+  
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 4: "A middle-aged white man wearing a gray cashmere crewneck sweater, blue jeans and black leather shoes"</b>
+	
+	<div class="oneline4">
+		<div class="c_avatar">
+		  <div class="C_vedio">
+			<video controls=""  height="512", width="512"  src="static/videos/show4/360.mp4">
+			</video>
+		  </div>
+		  <div class="C_vedio2">
+			<video controls="" height="512", width="512"  src="static/videos/show4/show4.mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+
+  <h2 id="content4"> 2. Clothing replacement results</h2>
+  
+  <b>Garments: brown coat, gray t-shirt, skinny blue jeans, white board shoes, pink hoodie, blue shirt, white lace sleeveless dress, khaki tailored trousers.</b>
+   <div class="oneline6">
+    <div class="C_vedio">
+        <video controls="" height="512"  src="static/videos/replace_q7.mp4">
+        </video>
+      </div>
+   </div>
+   
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <!-- 333 -->
+  <h2 id="content2"> 3. Muanual texture editing</h2>	
+  
+	
+	<p> <font size="5" color="red">PS: Click to play/stop the videos, drag to compare results.</font></p>
+    <p> <font size="5" color="black"> Original Avatar   Vs. After Muanual texture editing</font></p>
+  
+
+    <div class="oneline5">
+      <div class="showvideo">
+        <div class="img-comp-container">
+          <div class="img-comp-img">
+              <video  loop="" class="slider-video slider-video-0" width="600">
+                  <source src="static/videos/logo/logo_q8.mp4" type="video/mp4">
+              </video>
+          </div>
+          <div class="img-comp-img img-comp-overlay" style="width: 600">
+              <video  loop="" class="slider-video slider-video-0" width="600">
+                  <source src="static/videos/logo/nologo_q8.mp4" type="video/mp4">
+              </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <script>
+    initComparisons();
+    linkVideos(0);
+  </script>
+
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <!-- 333 -->
+  <h2 id="content3"> 4. Comparisons with baselines</h2>
+  
+  <p>
+    We compare our method with three baselines that adopt three typical 3D representations, including:
+    <ul>
+      <li><b>Dreamwaltz:</b> using single NeRF representation and SDS loss for optimizing.</li>
+      <li><b>HumanGaussian:</b>  modeling the whole clothed human with a set of 3D-GS and using SD fine-tuned with depth maps as guidance.</li>
+	  <li><b>SO-SMPL:</b> a disentangled method using meshes to represent body and garments and SDS loss as guidance.</li>
+  </ul> 
+  </p>
+
+
+  <b>Avatar 1: "A beautiful caucasian woman with short hair wearing a brown coat with gray t-shirt inside, skinny blue jeans and white board shoes"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c1.mp4">
+        </video>
+      </div>
+   </div>
+   
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 2: "A chubby african woman wearing a green long sleeve long straight silk dress"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c2.mp4">
+        </video>
+      </div>
+   </div>
+
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 3: "A chinese teenage girl wearing a crew neck blue denim sleeveless A-skirt, gray leggings and white board shoes"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c3.mp4">
+        </video>
+      </div>
+   </div>
+   
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 4: "A middle-aged white man wearing a gray cashmere crewneck sweater, blue jeans and black leather shoes"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c4.mp4">
+        </video>
+      </div>
+   </div>
+   
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 5: "A african man wearing a blue Hawaiian shirt and gold Lakers basketball shorts"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c5.mp4">
+        </video>
+      </div>
+   </div>
+  
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 6: "A beautiful caucasian woman with short hair wearing a pink hoodie, skinny blue jeans and white board shoess"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c6.mp4">
+        </video>
+      </div>
+   </div>
+   
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 7: "A beautiful caucasian woman with short hair wearing a blue shirt, khaki tailored trousers and white board shoes"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c7.mp4">
+        </video>
+      </div>
+   </div>
+
+   
+  <p></p>
+  <p></p>
+  <p></p>
+  <p></p>
+  <b>Avatar 8: "A beautiful caucasian woman with short hair wearing a white lace sleeveless dress and khaki tailored trousers inside"</b>
+  <div class="oneline2">
+    <div class="C_vedio">
+        <video controls="" height="700", width="700"  src="static/videos/Comparisons/c8.mp4">
+        </video>
+      </div>
+   </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+        
+          
+          
+
+
+          
+            
+    
+
+
+</body>
+</html>
